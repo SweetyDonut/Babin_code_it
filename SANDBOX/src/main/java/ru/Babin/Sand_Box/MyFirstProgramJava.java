@@ -10,8 +10,8 @@ public class MyFirstProgramJava {
         System.out.println("Площадь прямоугольника = "+ s.area());
 
 
-		Point p1 = new Point(2.3, 1.2);
-		Point p2 = new Point(4.5, 2.3);
+		Point p1 = new Point(1.0, 1.0);
+		Point p2 = new Point(0.0, -1.0);
 
 
 		System.out.println(distance(p1,p2));
