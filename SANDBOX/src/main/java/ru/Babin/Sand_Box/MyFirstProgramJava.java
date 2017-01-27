@@ -2,8 +2,18 @@ package ru.Babin.Sand_Box;
 public class MyFirstProgramJava {
 	public static void main(String[] args ){
 		//System.out.println("Hallo, world!!!");
+
+		Square s= new Square(5);
+        System.out.println("Площадь квадрата = "+ s.area());
+
+        Rectangle r= new Rectangle(4, 6);
+        System.out.println("Площадь прямоугольника = "+ s.area());
+
+
 		Point p1 = new Point(2.3, 1.2);
 		Point p2 = new Point(4.5, 2.3);
+
+
 		System.out.println(distance(p1,p2));
 
 		System.out.println(p1.mDistance(p2));
@@ -19,4 +29,6 @@ public class MyFirstProgramJava {
 
 		return Math.sqrt((x2-x1)*(x2-x1)+(y2-y1)*(y2-y1));
 	}
+
+
 }
