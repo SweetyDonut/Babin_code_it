@@ -27,7 +27,7 @@ public class ApplicationManager {
         contactHelper = new ContactHelper(wd);
 
         wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-        wd.get("http://localhost/addressbook/group.php");
+        wd.get("http://localhost/addressbook");
 
         sessionHelper.login("admin", "secret");
     }
@@ -36,6 +36,7 @@ public class ApplicationManager {
     public void stop() {
         wd.quit();
     }
+
 
     public GroupHelper getGroupHelper() {
         return groupHelper;
@@ -49,3 +50,5 @@ public class ApplicationManager {
         return contactHelper;
     }
 }
+
+
