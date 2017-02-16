@@ -20,7 +20,7 @@ public class ApplicationManager {
     private SessionHelper sessionHelper;
     private GroupHelper groupHelper;
     private ContactHelper contactHelper;
-    String browser;
+    private String browser;
 
     public ApplicationManager(String browser) {
         this.browser = browser;
@@ -28,9 +28,6 @@ public class ApplicationManager {
 
 
     public void init() {
-//        System.setProperty("webdriver.gecko.driver", "C:\\geckodriver-v0.14.0-win64\\geckodriver.exe");
-//        System.setProperty("webdriver.chrome.driver", "C:\\chromedriver_win32\\chromedriver.exe");
-//        System.setProperty("webdriver.ie.driver","C:\\IEDriverServer_Win32_3.0.0\\IEDriverServer.exe");
 
 
 
@@ -38,15 +35,15 @@ public class ApplicationManager {
 
         else if (browser.equals(BrowserType.CHROME))  wd = new ChromeDriver();
 
-        else if(browser.equals(BrowserType.IE)) wd= new InternetExplorerDriver();
-
-        navigationHelper = new NavigationHelper(wd);
-        groupHelper = new GroupHelper(wd);
-        contactHelper = new ContactHelper(wd);
+        else wd= new InternetExplorerDriver();
+//        else if(browser.equals(BrowserType.IE)){ wd= new InternetExplorerDriver();}
 
         wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
         wd.get("http://localhost/addressbook");
-
+        navigationHelper = new NavigationHelper(wd);
+        groupHelper = new GroupHelper(wd);
+        contactHelper = new ContactHelper(wd);
+        sessionHelper = new SessionHelper(wd);
         sessionHelper.login("admin", "secret");
     }
 
