@@ -1,6 +1,11 @@
 package ru.stqa.pft.addressbook.appmanager;
 
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.remote.BrowserType;
+
 
 import java.util.concurrent.TimeUnit;
 
@@ -9,19 +14,32 @@ import java.util.concurrent.TimeUnit;
  */
 public class ApplicationManager {
 
-    private FirefoxDriver wd;
+    private WebDriver wd;
 
     private NavigationHelper navigationHelper;
     private SessionHelper sessionHelper;
     private GroupHelper groupHelper;
     private ContactHelper contactHelper;
+    String browser;
+
+    public ApplicationManager(String browser) {
+        this.browser = browser;
+    }
 
 
     public void init() {
-        System.setProperty("webdriver.gecko.driver", "C:\\geckodriver-v0.14.0-win64\\geckodriver.exe");
+//        System.setProperty("webdriver.gecko.driver", "C:\\geckodriver-v0.14.0-win64\\geckodriver.exe");
+//        System.setProperty("webdriver.chrome.driver", "C:\\chromedriver_win32\\chromedriver.exe");
+//        System.setProperty("webdriver.ie.driver","C:\\IEDriverServer_Win32_3.0.0\\IEDriverServer.exe");
 
-        wd = new FirefoxDriver();
-        sessionHelper = new SessionHelper(wd);
+
+
+        if (browser.equals(BrowserType.FIREFOX))  wd = new FirefoxDriver();
+
+        else if (browser.equals(BrowserType.CHROME))  wd = new ChromeDriver();
+
+        else if(browser.equals(BrowserType.IE)) wd= new InternetExplorerDriver();
+
         navigationHelper = new NavigationHelper(wd);
         groupHelper = new GroupHelper(wd);
         contactHelper = new ContactHelper(wd);

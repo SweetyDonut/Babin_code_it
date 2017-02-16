@@ -12,6 +12,9 @@ public class ContactDelitionTests extends TestBase {
     public void ContactDelitionTests(){
 
         app.getNavigationHelper().gotoHomePage();
+
+
+
         app.getContactHelper().initContactModification();
 
         app.getContactHelper().deleteContact();
